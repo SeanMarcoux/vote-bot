@@ -46,7 +46,7 @@ function getMillisTilMidnight() {
 }
 
 function vote() {
-    var fileText = fs.readFileSync("votes.txt");
+    var fileText = fs.readFileSync("votes.txt").toString();
     var lines = fileText.split("\n");
     
     for(var i = 0; i < lines.length; i++) {
@@ -55,6 +55,7 @@ function vote() {
         
         channel.send(lines[i]);
     }
+    startDailyVoteTimer();
 }
 
 var key = fs.readFileSync("key.txt");
